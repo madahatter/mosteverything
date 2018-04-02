@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+}
+
+.picture {
+    height:100px;
+}
+
+.animal {
+    text-align: center;
+    border-style: dashed;
+    margin:20px;
+    padding: 10px;
+    margin-bottom: 100px
+}
+.title{
+    text-indent: 50px;
+
+}
+.margin{
+    margin: 100px
+}
