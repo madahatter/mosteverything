@@ -2,11 +2,11 @@ var assert = require('assert');
 
 // we need 5 test cases. 
 let inputs = [
-  
+    "Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam"
 ]
 
 let outputs = [
-  
+    "Lorem ipsumos dolor sit amet consectetur\nadipisicing elit. Magni quisquam"
 ]
 
 /*
@@ -31,9 +31,11 @@ Lorem ipsumos dolor sit amet consectetur
  even though there is a space before the a in adipisicing
 */
 function f(str) {
-    
+    var newStr = str.substring(0, 20)    
+    console.log(newStr)
 }
 
+console.log(newStr)
 function runTest(i) {
     if(i > inputs.length) throw new Error("You do not have enough test cases");
     var expected = outputs[i];
