@@ -11,8 +11,8 @@ function isDog(animal) {
     return animal.species === 'dog';
 }
 
-animals.some(isDog)
-animals.every(isDog)
+animals.some(isDog) //checks if at least 1 passes function (true) 
+animals.every(isDog)//checks if all items in array passes function returns false
 
 
 

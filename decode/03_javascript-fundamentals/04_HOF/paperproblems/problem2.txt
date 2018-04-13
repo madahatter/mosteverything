@@ -30,3 +30,7 @@ map(someNumbers, triple) => [3, 6, 9, 12]
 
 map(someStrings, toUpperCase) => ["BOB", "ERIC"]
 map(someStrings, toLowerCase) => ["bob", "eric"]
+
+2 parameters
+arrays and f()
+if arrays contain numbers double or triple / if arrays contain strings upper or lower case

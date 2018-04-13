@@ -1,46 +1,48 @@
-function makeTeacher(n) {
-    return {name: n, hoursTaught: 0};
-}
-
-function makeStudent(n, we) {
-    return {name: n, fundamentalsProficiency: 0, workEthic: we};
-}
-
-function teach(teacher, student) {
-    student.fundamentalsProficiency = student.fundamentalsProficiency + 1;
-    teacher.hoursTaught = teacher.hoursTaught + 1;
-}
-
-function getProficiency(student) {
-    return student.fundamentalsProficiency;
-}
-
-function dadJoke(teacher) {
-    console.log(teacher + " made a funny");
-}
-
-function doProject(student) {
-    if(student.fundamentalsProficiency < 5) {
-        console.log(student.name + " was not ready to take on the project");
-    } else {
-        console.log(student.name + " successfully completed the project!");
+class makeTeacher{
+    constructor(n) {
+        this.name = n; 
+        this.hoursTaught = 0;
+    }
+    teach(student) {
+        student.fundamentalsProficiency = student.fundamentalsProficiency + 1;
+        this.hoursTaught = this.hoursTaught + 1;
+    }
+    dadJoke() {
+        console.log(this + " made a funny");
     }
 }
 
-function study(student) {
-    student.fundamentalsProficiency = student.fundamentalsProficiency + student.workEthic;
+class makeStudent{
+    constructor(n, we) {
+        this.name = n;
+        this.fundamentalsProficiency = 0;
+        this.workEthic = we;
+    }
+    getProficiency() {
+        this.fundamentalsProficiency;
+    }
+    doProject() {
+        if(this.fundamentalsProficiency < 5) {
+            console.log(this.name + " was not ready to take on the project");
+        } else {
+            console.log(this.name + " successfully completed the project!");
+        }
+    }
+    study() {
+        this.fundamentalsProficiency = this.fundamentalsProficiency + this.workEthic;
+    }
 }
 
-var jack = makeTeacher("jack");
-var bob = makeStudent("bob", 10);
-var susan = makeStudent("susan", 12);
-teach(jack, bob);
-teach(jack, susan);
-doProject(bob);
-doProject(susan);
-study(bob);
-study(susan);
-doProject(bob);
-doProject(susan);
+var jack = new makeTeacher("jack");
+var bob = new makeStudent("bob", 10);
+var susan = new makeStudent("susan", 12);
+jack.teach(bob);
+jack.teach(susan);
+bob.doProject();
+susan.doProject();
+bob.study();
+susan.study();
+bob.doProject();
+susan.doProject();
 
 

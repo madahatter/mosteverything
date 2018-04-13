@@ -1,0 +1,12 @@
+#sunnybackground {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#startgame {
+    border-radius: 12px;
+    width: 150px;
+    text-align: center;
+    margin:0 auto;
+}

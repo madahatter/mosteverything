@@ -1,0 +1,27 @@
+.restartBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+}
+#startbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: 'Duck Hunt';
+    src: url('http://www.fontsaddict.com/fontface/duck-hunt.ttf')
+}
+
+.duck {
+    position:relative;
+    top:-64px;
+    left:210px;
+    background: url("rsz_duck1.png");
+    background-repeat: no-repeat;
+    background-size:contain;
+    line-height:3000;
+    width: 100px;
+    height:100px;
+    border:none;
+    cursor:pointer; 
+}

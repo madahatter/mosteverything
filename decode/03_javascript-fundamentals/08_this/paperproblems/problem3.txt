@@ -9,9 +9,9 @@ var obj = {
 
 var obj2 = {
     bar: function() {console.log(this.baz + 2);},
-    baz: 12
+    baz: 18
 }
 
 obj2.bar = obj.bar;
 obj2.bar();
-
+18 call stack at 16

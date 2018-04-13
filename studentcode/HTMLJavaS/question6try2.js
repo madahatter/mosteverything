@@ -4,13 +4,13 @@ var textBox = document.querySelector("h1")
 var buttons = []
 var ctr = 0
 var randTime = genRandNum(1000, 3000)
-var gameTime = 5000
 var randButton = genRandNum(1, 10)
+var gameTime = randTime + 1000 + randButton * 400
 var ended = false
 
 
 function genRandNum(min, max) {
-    return Math.random() * (max - min) + min
+    return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
 function restartFunc() {
@@ -25,26 +25,37 @@ function deleteButtons() {
     buttons.forEach(btn => btn.remove());
     buttons = [];
 }
-
     startButton.addEventListener('click',()=>{
         startButton.remove()
-        setTimeout(()=>{
+            setTimeout(()=>{
+                setTimeout(()=> {
+                    if(!ended) {
+                        var label = document.createElement("Label") 
+                        label.innerHTML = "You've Lost, Try Again?" 
+                        textBox.appendChild(label)
+                        ended = true
+                        entirePage.removeEventListener('click', clickHandler)
+                        deleteButtons()
+                        restartFunc()
+                    }
+                }
+            
+            , gameTime)
             generateButtons(randButton)
-            setTimeout(entirepage.addEventListener('click', () => {
-                
+            entirepage.addEventListener('click', clickHandler)
+            
+            function clickHandler(){ 
+                if(ended == false) {     
                 var label = document.createElement("Label") 
                 label.innerHTML = "You've Lost, Try Again?" 
                 textBox.appendChild(label)
                 ended = true
-                deleteButtons()
-                
-       //         removeEventListener("click")    
-                clearTimeout("click", 1)
-                restartFunc()
-            }),gameTime)
-        },randTime)
-
-        })
+                entirePage.removeEventListener('click', clickHandler)
+                deleteButtons()  
+            
+                restartFunc()}
+            }}
+        ,randTime)})
 
 
  function generateButtons(count) {
@@ -69,7 +80,7 @@ function deleteButtons() {
                  var label = document.createElement("Label") 
                  label.innerHTML = "You're a winner!!!" 
                  textBox.appendChild(label)
-                 ended = false
+                 ended = true
                  restartFunc()
                 }})
              }}

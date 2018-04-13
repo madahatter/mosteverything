@@ -4,10 +4,13 @@ In other words, replace all the function definitions with anonymous functions
 function greet(x) {
     console.log("hello " + x);
 }
-
+var greet = function(x) {console.log("hello " + x)}
 function twice(f) {
     f("bob");
     f("mary");
 }
+var twice = function(f) {f("bob");f("mary");}
 
 twice(greet);
+
+((function(f) {f("bob");f("mary");})(function(x) {console.log("hello " + x)}))

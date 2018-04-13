@@ -4,6 +4,7 @@ function askOnADate(n) {
     if(n === "Bob") return "I do!";
     else return "Absolutely not!";
 }
+}
 
 function soften(f) {
     return function(name) {
@@ -17,3 +18,5 @@ function soften(f) {
 var softAskOnADate = soften(askOnADate);
 console.log(softAskOnADate("Eric"));
 console.log(softAskOnADate("Bob"));
+
+Eric maybeBob I do

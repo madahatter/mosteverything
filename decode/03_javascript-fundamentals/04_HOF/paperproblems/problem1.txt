@@ -28,3 +28,7 @@ filter(oddNumbers, isEven)  => []
 filter(oddNumbers, isOdd)   => [3, 5, 7, 9]
 filter(someNumbers, isEven) => [2, 4]
 filter(someNumbers, isOdd)  => [1, 3]
+
+parameters = 2
+types = var and f()
+takes an array and returns the original array if it is either even or odd

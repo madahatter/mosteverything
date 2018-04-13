@@ -1,7 +1,6 @@
 Define a Rectangle class that extends the Shape class
 Then create an instance of the Rectangle class
 Then call the toString method on the new instance and print it out
-
 class Shape {
     constructor(shapeName) {
         this.shapeName = shapeName;
@@ -11,3 +10,17 @@ class Shape {
           this.area() + " and perimeter " + this.perimeter();
     }
 }
+
+class Rectangle extends Shape{
+    constructor(perimeter){
+        super("Rectangle")
+        this.height = perimeter
+        this.width = perimeter
+
+    }
+    area() {return this.height * this.width}
+    perimeter() {return this.height * 4}
+}
+
+var x = new Rectangle(5)
+console.log(x.toString())
