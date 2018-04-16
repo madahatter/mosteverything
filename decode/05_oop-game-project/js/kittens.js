@@ -1,5 +1,5 @@
 // This sectin contains some game constants. It is not super interesting
-var GAME_WIDTH = 520;
+var GAME_WIDTH = 670;
 var GAME_HEIGHT = 480;
 
 var ENEMY_WIDTH = 75;
@@ -29,6 +29,7 @@ var MOVE_RIGHT = 'right';
 var MOVE_UP = 'up'
 var MOVE_DOWN = 'down'
 
+var newGameButton = document.querySelector("#NewGameButton")
 // Preload game images
 // var ranEnem = 0
 // function ranEne() { 
@@ -38,7 +39,7 @@ var MOVE_DOWN = 'down'
 //     return ranEnem
 //     }
 var images = {};
-['enemy.png', 'player.png', 'rsz_duck1.png', "space.jpg", "heart.jpg"].forEach(imgName => {
+['enemy.png', 'player.png', 'rsz_duck1.png', "space.jpg", "heart.jpg", "background2.png"].forEach(imgName => {
     var img = document.createElement('img');
     img.src = 'images/' + imgName;
     images[imgName] = img;
@@ -104,6 +105,23 @@ class LifeUp{
         this.y = this.y + timeDiff * this.speed;
     }
 }
+// class LifeUp{
+//     constructor(yPos) {
+//         this.y = yPos;
+//         this.x = -LIFEUP_HEIGHT;
+//         this.sprite = images['heart.jpg'];
+//         this.id = "Life"
+
+//         // Each enemy should have a different speed
+//         this.speed = Math.random() / 2 + 0.25;
+//     }
+//     render(ctx) {
+//     ctx.drawImage(this.sprite, this.x, this.y, LIFEUP_WIDTH, LIFEUP_HEIGHT);
+//     }
+//     update(timeDiff) {
+//         this.y = this.y + timeDiff * this.speed;
+//     }
+// }
 
 class Player{
     constructor() {
@@ -257,7 +275,8 @@ class Engine {
         this.enemies.forEach(enemy => enemy.update(timeDiff));
 
         // Draw everything!
-        this.ctx.drawImage(images['space.jpg'], 0, 0); // draw the star bg
+        this.ctx.drawImage(images['background2.png'], 0, 0); // draw the star bg
+
         this.enemies.forEach(enemy => enemy.render(this.ctx)); // draw the enemies
         this.player.render(this.ctx); // draw the player
 
@@ -281,6 +300,7 @@ class Engine {
             this.ctx.font = 'bold 30px Impact';
             this.ctx.fillStyle = '#ffffff';
             this.ctx.fillText(Math.floor(this.score / 1000), 5, 30);
+            this.ctx.fillText("Lives: " + currentLifes, 500, 30)
 
             // Set the time marker and redraw
             this.lastFrame = Date.now();
@@ -300,16 +320,14 @@ class Engine {
                    console.log(currentLifes)
                    return false
                }
-               return true
+               else if(!element.id && currentLifes > 0) {
+                   currentLifes = currentLifes - 1
+                   delete this.enemies[index]
+                   console.log(currentLifes)
+                   return false
+               }
+                return true
            }
-           // console.log(element)
-            //    { var whichEnemy = element.x
-            // }  
-            // else if(element != "LifeUp"){
-            //     currentLifes = currentLifes + 1
-            //     return true
-            // }
-            // else {return true}
         }))
 
         // TODO: fix this function!
@@ -317,9 +335,14 @@ class Engine {
 
    }
 }
-
-
-
+//newGameButton.addEventListener('click', ()=> window.location.reload())
+// function restartFunc() {
+//     var restartBtn = document.createElement("button")
+//     restartBtn.innerText = "Restart Game"
+//     restartBtn.className = "restartBtn"
+//     newGameButton.appendChild(restartBtn)
+//     restartBtn.addEventListener('click', ()=> window.location.reload())
+// }
 
 
 // This section will start the game
