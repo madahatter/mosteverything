@@ -1,0 +1,16 @@
+{
+  "name": "question5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "question5.js",
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

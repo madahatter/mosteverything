@@ -10,7 +10,7 @@ var elem = React.createElement(
   React.createElement(
     'li',
     null,
-    'bacon2'
+    'bacon'
   ),
   React.createElement(
     'li',
@@ -18,4 +18,5 @@ var elem = React.createElement(
     'milk'
   )
 );
+
 ReactDOM.render(elem, rootdiv);

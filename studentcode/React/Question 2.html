@@ -1,0 +1,28 @@
+<html>
+<head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+        <div id="root"></div>
+   <script>
+       class question2 extends React.Component {
+           constructor() {
+            super()
+            this.state = {sw: true}
+           }
+           render() {
+               if (this.state.sw) {
+            return React.createElement("button", {onClick: () => this.setState({sw: !this.state.sw})}, "goodbye")}
+             else {
+                return React.createElement("button", {onClick: () => this.setState({sw: !this.state.sw})}, "hello")
+                    }
+                }
+            }
+       var rootdiv = document.getElementById("root")
+       ReactDOM.render(React.createElement(question2, null), rootdiv)
+
+            
+ </script>
+</body>
+</html>

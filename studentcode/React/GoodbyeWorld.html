@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+ <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+   <div id="root"></div>
+   <script>
+var counter = 0
+var rootdiv = document.getElementById('root');   
+function rerender() {
+  var elem = React.createElement("button", null, counter + " times");
+  counter++;
+  ReactDOM.render(elem, rootdiv);
+}
+rerender();
+document.getElementById('root').addEventListener('click', rerender);
+ </script>
+</body>
+</html>

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "one-liner-joke": "^1.0.0",
     "p5": "^0.6.0"
   }
 }

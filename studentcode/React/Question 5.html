@@ -1,0 +1,35 @@
+<html>
+<head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+        <div id="root"></div>
+   <script>
+var quotes = ["When we have the Spirit to direct us, we are capable of teaching with great power.",
+              "I had reasoned this out in my mind, there was two things I had a right to, liberty and death. If I could not have one, I would have the other, for no man should take me alive.",
+              "I take the view, and always have, that if you cannot say what you are going to say in twenty minutes you ought go to away and write a book about it.",
+              "I can't stand this proliferation of paperwork. It's useless to fight the forms. You've got to kill the people producing them.",
+              "Power is not only what you have but what the enemy thinks you have."]
+       class question3 extends React.Component {
+           constructor() {
+            super()
+            this.state = {quote: ""}
+
+           }
+
+
+           render() {
+
+            return React.createElement("div", null, this.state.quote,
+                        React.createElement("button", {onClick: () => this.setState({quote: quotes[Math.floor(Math.random()* 4) + 1]})}, "Random Quote")
+                            )
+                  }
+            }
+       var rootdiv = document.getElementById("root")
+       ReactDOM.render(React.createElement(question3, null), rootdiv)
+
+            
+ </script>
+</body>
+</html>

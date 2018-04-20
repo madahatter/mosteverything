@@ -4,7 +4,7 @@ var GAME_HEIGHT = 480;
 
 var ENEMY_WIDTH = 75;
 var ENEMY_HEIGHT = 75;
-var MAX_ENEMIES = 3;
+var MAX_ENEMIES = 4;
 
 var ENEMY2_WIDTH = 75;
 var ENEMY2_HEIGHT = 100;
@@ -18,7 +18,8 @@ var PLAYER_HEIGHT = 54;
 var BULLET_WIDTH = 75
 var BULLET_HEIGHT = 75
 
-var currentLifes = 1
+var currentLifes = 1    
+var introScreen = document.querySelector("#SplashScreen")
 
 // These two constants keep us from using "magic numbers" in our code
 var LEFT_ARROW_CODE = 37;
@@ -49,7 +50,7 @@ var newGameButton = document.querySelector("#NewGameButton")
 //     return ranEnem
 //     }
 var images = {};
-['rsz_burns.png', 'rsz_homer_mouth.png', 'rsz_flanders.png', "rsz_beer.png","rsz_donut.png", "rsz_simpsons_sky.png"].forEach(imgName => {
+['rsz_burns.png', 'rsz_homer_mouth.png', 'rsz_flanders.png', "rsz_beer.png","rsz_donut.png", "rsz_simpsons_sky.png", "rsz_simpsons_couch.jpg"].forEach(imgName => {
     var img = document.createElement('img');
     img.src = 'images/' + imgName;
     images[imgName] = img;
@@ -115,23 +116,7 @@ class LifeUp {
         this.y = this.y + timeDiff * this.speed;
     }
 }
-// class LifeUp{
-//     constructor(yPos) {
-//         this.y = yPos;
-//         this.x = -LIFEUP_HEIGHT;
-//         this.sprite = images['heart.jpg'];
-//         this.id = "Life"
 
-//         // Each enemy should have a different speed
-//         this.speed = Math.random() / 2 + 0.25;
-//     }
-//     render(ctx) {
-//     ctx.drawImage(this.sprite, this.x, this.y, LIFEUP_WIDTH, LIFEUP_HEIGHT);
-//     }
-//     update(timeDiff) {
-//         this.y = this.y + timeDiff * this.speed;
-//     }
-// }
 
 class Player {
     constructor() {
@@ -259,6 +244,8 @@ class Engine {
 
         this.lastFrame = Date.now();
 
+        this.ctx.drawImage(images['rsz_simpsons_couch.jpg'], 0, 0);
+
         // Listen for keyboard left/right and update the player
         document.addEventListener('keydown', e => {
             if (e.keyCode === LEFT_ARROW_CODE) {
@@ -321,7 +308,7 @@ class Engine {
                 delete this.enemies[enemyIdx];
             }
         });
-
+        
         this.setupEnemies();
         this.setupBullets();
         this.didBulletHit();
@@ -344,7 +331,7 @@ class Engine {
             // If player is not dead, then draw the score
             this.ctx.font = 'bold 30px Impact';
             this.ctx.fillStyle = '#ffffff';
-            this.ctx.fillText(Math.floor(this.score / 1000), 5, 30);
+            this.ctx.fillText(Math.floor(this.score / 100), 5, 30);
             this.ctx.fillText("Lives: " + currentLifes, 500, 30)
 
             // Set the time marker and redraw
@@ -365,11 +352,12 @@ class Engine {
 
                 if (enemyx == bulletx && enemyy + ENEMY_HEIGHT > bullety) {
                     didHit = true
+
                     delete this.enemies[i]
                     delete this.bullets[j]
                     tempCheck = true
                     console.log("HEY111")
-                    this.score += 100000
+                    this.score += 10000
                     //console.log("Hit")
                 }
                 else if (bullety < 0) {
@@ -413,4 +401,6 @@ class Engine {
 
 // This section will start the game
 var gameEngine = new Engine(document.getElementById('app'));
+
+
 gameEngine.start();
