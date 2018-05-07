@@ -1,0 +1,79 @@
+import React, { Component } from 'react';
+import { Route, BrowserRouter, Link } from 'react-router-dom'
+import Seller from './Seller.js'
+import Item from './Item.js'
+import ItemDetails from './ItemDetails.js'
+import ReviewerDetails from './ReviewerDetails.js'
+import { reviewers } from './Reviewers.js'
+import { items } from './Items.js'
+import { sellers } from './Sellers.js'
+import './App.css';
+
+
+
+let renderAllItems = () => {
+  let renderedItems = items.map((item, itemId) => (<Item
+    price={item.price}
+    sellerId={item.sellerId}
+    imageLocation={item.image}
+    itemId={itemId}
+    description={item.description} />))
+
+  return (<div>
+    <Link to="/allSellers"> All sellers </Link>
+    {renderedItems}
+  </div>)
+}
+
+function renderSeller(routerData) {
+  // the .id is the same as the :id from the Route below. 
+  // You can give it any name, but they have to match.
+  // For example, routerData.match.params.uniqueID would be fine too
+  // But you would have to modify the Route below to /seller/:uniqueID
+  return (<Seller sellerId={routerData.match.params.id} />)
+
+}
+
+let renderItemDetails = routerData => {
+  let theWholeItem = items[routerData.match.params.theItemID]
+  return (<ItemDetails item={theWholeItem} />)
+}
+
+let renderReviewer = routerData => {
+  let id = routerData.match.params.reviewerID;
+  let theReviewer = reviewers[id]
+  return (<div>
+    <ReviewerDetails reviewerId={id} reviewer={theReviewer} />
+  </div>)
+}
+
+let renderAllSellers = () => {
+  let ret = sellers.map((seller, sellerId) =>
+    <div><Link to={'seller/' + sellerId}> {seller.name} </Link></div>)
+  return ret;
+}
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Route exact={true} path='/' render={renderAllItems} />
+          <Route exact={true} path='/seller/:id' render={renderSeller} />
+          <Route exact={true} path='/details/:theItemID' render={renderItemDetails} />
+          <Route exact={true} path='/allSellers' render={renderAllSellers} />
+
+          <Route exact={true} path='/reviewer/:reviewerID' render={renderReviewer} />
+        </div>
+      </BrowserRouter>
+
+    );
+  }
+}
+export { reviewers }
+export default App;
+
+
+
+// WEBPACK FOOTER //
+// src/App.js

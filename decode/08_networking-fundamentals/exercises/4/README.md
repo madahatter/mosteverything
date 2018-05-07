@@ -15,6 +15,7 @@ X-Pad: avoid browser bug
   
 <html><body><h1>It works!</h1></body></html>
 ```
+missing path
 B.
 ```
 404 Not Found
@@ -32,6 +33,7 @@ Content-Type: text/html; charset=iso-8859-1
 <p>The requested URL /t.html was not found on this server.</p>
 </body></html>
 ```
+
 
 C.
 ```

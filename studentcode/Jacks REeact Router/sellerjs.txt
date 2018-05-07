@@ -1,0 +1,53 @@
+import React, { Component } from 'react';
+import './App.css';
+import { items } from './Items.js'
+import { Link } from 'react-router-dom'
+import { sellers } from './Sellers.js'
+
+let formatSeller = (seller) => {
+  return (<div className="card center">
+    <div>
+      <div>{seller.name}</div>
+      <div>{seller.rating}</div>
+    </div>
+  </div>)
+}
+
+let getItems = (id) => {
+  let ret = [];
+  items.forEach((item, iid) => {
+    if (item.sellerId === id) {
+      ret.push({ itemId: iid, desc: item.description });
+    }
+  });
+  return ret;
+}
+
+
+class Seller extends Component {
+  render() {
+    let items = getItems(parseInt(this.props.sellerId));
+    let lify = item => {
+      return (<li>
+        <Link to={"/details/" + item.itemId}>
+          {item.desc}
+        </Link>
+      </li>)
+    }
+    return (
+      <div>
+        <div>{formatSeller(sellers[this.props.sellerId])}</div>
+        <ul>
+          {items.map(lify)}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default Seller;
+
+
+
+// WEBPACK FOOTER //
+// src/Seller.js

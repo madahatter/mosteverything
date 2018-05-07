@@ -32,6 +32,6 @@ function process(httpResponse) {
         console.log("the word is not the page");
     }
 }
-var httpRequest = generateHTTPRequest('www.dolekemp96.org', '/');
+var httpRequest = generateHTTPRequest('www.nba.com/jordan', '/');
 
-makeRequest("www.dolekemp96.org", httpRequest, process)
+makeRequest("www.nba.com/jordan", httpRequest, process)

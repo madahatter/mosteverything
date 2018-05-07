@@ -6,6 +6,7 @@ GET /testdir HTTP/1.1
 Host: 127.0.0.1
 
 ```
+myself/testdir
 
 B. What is the method of this HTTP request?
 ```
@@ -13,6 +14,7 @@ DELETE /testdir HTTP/1.1
 Host: 127.0.0.1
 
 ```
+delete
 
 C. How many headers does this request have?
 ```
@@ -24,6 +26,7 @@ Accept-Encoding: gzip, deflate
 User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
 
 ```
+3
 
 D. What is the value of the HOST header for the following request?
 ```
@@ -35,3 +38,4 @@ Accept-Encoding: gzip, deflate
 User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
 
 ```
+www.nowhere123.com

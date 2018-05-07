@@ -1,0 +1,40 @@
+import React, { Component } from 'react';
+import './App.css';
+import { reviewers } from './Reviewers.js'
+import { items } from './Items.js'
+
+
+function getAllReviews(stringId) {
+  let id = parseInt(stringId)
+  let ret = [];
+  items.forEach(item => {
+    item.reviews.forEach(review => {
+      if (review.reviewerId === id) {
+        ret.push(review);
+      }
+    })
+  })
+  return ret;
+}
+
+class ReviewerDetails extends Component {
+
+  render() {
+    let reviews = getAllReviews(this.props.reviewerId);
+    return (
+      <div>
+        {this.props.reviewer}
+        <ul>
+          {reviews.map(r => (<li> {r.description} </li>))}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default ReviewerDetails;
+
+
+
+// WEBPACK FOOTER //
+// src/ReviewerDetails.js

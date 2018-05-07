@@ -1,0 +1,10 @@
+
+let reviewers = [
+    "bob",
+    "sue"
+]
+export { reviewers }
+
+
+// WEBPACK FOOTER //
+// src/Reviewers.js

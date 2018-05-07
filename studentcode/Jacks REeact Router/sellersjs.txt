@@ -1,0 +1,15 @@
+let sellers = [{
+    name: "Jack Frost",
+    rating: "5 stars"
+},
+{
+    name: "Hank Green",
+    rating: "2 stars"
+}
+]
+
+export { sellers }
+
+
+// WEBPACK FOOTER //
+// src/Sellers.js

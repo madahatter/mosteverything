@@ -1,0 +1,30 @@
+import React, { Component } from 'react';
+import { reviewers } from './Reviewers.js'
+import { Link } from 'react-router-dom'
+
+class ItemDetails extends Component {
+
+  render() {
+    let lify = review => {
+      return (<li>
+        <Link to={'/reviewer/' + review.reviewerId}>{reviewers[review.reviewerId]} </Link>
+        says: {review.description}
+      </li>);
+    }
+    return (
+      <div>
+        {this.props.item.description}
+        <ul>
+          {this.props.item.reviews.map(lify)}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default ItemDetails;
+
+
+
+// WEBPACK FOOTER //
+// src/ItemDetails.js

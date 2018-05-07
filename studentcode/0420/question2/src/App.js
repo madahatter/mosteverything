@@ -69,6 +69,7 @@ randFredAnswers = () => {
   componentWillMount() {
     var prompt_ = prompt("please enter your name")
     this.setState({name : prompt_})
+
   }
   render() {
 

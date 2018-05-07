@@ -8,11 +8,13 @@ Accept: image/gif, image/jpeg, */*
 Accept-Language: en-us
 Accept-Encoding: gzip, deflate
 User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
+no path before http
 
 ```
 b)
 ```
 /index.html HTTP/1.0 GET
+get is not first
 
 ```
 
@@ -25,7 +27,7 @@ Connection: Keep-Alive
 
 d)
 ```
-GET http://www.amazon.com/index.html
+GET http://www.amazon.com/index.html no http/1.x
 Host: www.amazon.com
 Connection: Close
 
